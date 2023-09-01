@@ -1,0 +1,8 @@
+Music
+'ProTools', 'Studio One', 'Ableton', 'Fl Studio'
+
+Coding
+'Visual Studio', 'Command Prompt', 'Github', 'Notepad'
+
+Leisure
+'Play Chess', 'Open Youtube', 'Browse the Web'
