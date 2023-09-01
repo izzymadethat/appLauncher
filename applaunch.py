@@ -5,10 +5,10 @@ import subprocess
 
 # programs I will use
 music_programs = {
-    'ProTools': 'Not Available',
+    'ProTools': r'C:\Program Files\Avid\Pro Tools\ProTools.exe',
     'Studio One': r'C:\Program Files\PreSonus\Studio One 5\Studio One.exe',
-    'Ableton': 'Not Available',
-    'Fl Studio': 'Not Available',
+    'Ableton': r'C:\ProgramData\Ableton\Live 11 Lite\Program\Ableton Live 11 Lite.exe',
+    'Fl Studio': r'C:\Program Files\Image-Line\FL Studio 21\FL64.exe',
 }
 
 coding_programs = {
@@ -54,7 +54,7 @@ app.title('Application Program Launcher')
 TITLE_FONT = ctk.CTkFont('Arial', 30)
 TEXT_FONT = ctk.CTkFont('Arial', 15)
 
-# frames section 
+# frames section
 music_frame = ctk.CTkFrame(app, border_width=3, border_color='#ffffff', width=200)
 code_frame = ctk.CTkFrame(app, border_width=3, border_color='#ffffff', width=200)
 fun_frame = ctk.CTkFrame(app, border_width=3, border_color='#ffffff', width=200)
