@@ -1,52 +1,46 @@
 # This app allows me to open any application of my choosing with a single button
 import customtkinter as ctk
-import os
+import webbrowser
+import subprocess
 
 # programs I will use
 music_programs = {
-    'ProTools': 'Launching ProTools...',
-    'Studio One': 'Launching Studio One...',
-    'Ableton': 'Launching Ableton Live...',
-    'Fl Studio': 'Launching FL Studio...',
+    'ProTools': 'Not Available',
+    'Studio One': r'C:\Program Files\PreSonus\Studio One 5\Studio One.exe',
+    'Ableton': 'Not Available',
+    'Fl Studio': 'Not Available',
 }
 
 coding_programs = {
-    'Visual Studio': 'Launching Visual Studio...',
-    'Command Prompt': 'Launching Terminal...',
-    'Github': 'Launching GitHub Desktop...',
-    'Notepad': 'Launching Notepad...',
+    'Visual Studio': r'C:\Users\Isaiah Vickers\AppData\Local\Programs\Microsoft VS Code\Code.exe',
+    'Command Prompt': r'C:\WINDOWS\system32\cmd.exe',
+    'Github': r'C:\Users\Isaiah Vickers\AppData\Local\GitHubDesktop\GitHubDesktop.exe',
+    'Notepad': r"C:/WINDOWS/system32/notepad.exe"
 }
 
 fun_programs = {
-    'Play Chess': 'Opening Chess.com...',
-    'Open Youtube': 'Opening Youtube...',
-    'Browse the Web': 'Browsing the Web...',
+    'Play Chess': 'https://www.chess.com/',
+    'Open Youtube': 'https://www.youtube.com/',
+    'Browse the Web': r'C:\Program Files\Google\Chrome\Application\chrome.exe'
 }
 
-# Function to run a program
+
+# function to run any program selected
 def run_program(program_var, program_dict):
     program = program_var.get()
-    
-
-# function tp run any program selected
-def run_music_app(program, music_dict):
-    program = music_var.get()
     if program != 'Choose a Program':
-        print(music_dict.get(program, 'Program Not Found'))
-    else:
-        print('No Program selected')
-
-def run_coding_app(program, code_dict):
-    program = code_var.get()
-    if program != 'Choose a Program':
-        print(code_dict.get(program, 'Program Not Found'))
-    else:
-        print('No Program selected')
-
-def run_fun_app(program, fun_dict):
-    program = fun_var.get()
-    if program != 'Choose a Program':
-        print(fun_dict.get(program, 'Program Not Found'))
+        if program in program_dict:
+            path = program_dict[program]
+            if path.startswith('http'):
+                print("Launching Site...")
+                webbrowser.open(path)
+            elif path.startswith('Not Available'):
+                print('Not Available on this computer')
+            else:
+                print("Launching Program...")
+                subprocess.Popen([path])
+        else:
+            print("Program not Available")
     else:
         print('No Program selected')
 
@@ -77,8 +71,8 @@ music_select = ctk.CTkOptionMenu(music_frame, width=150, values=list(music_progr
 music_select.set('Choose a Program')
 music_select.pack()
 
-launch_music = ctk.CTkButton(music_frame, text='Open Selected Music App', font=TEXT_FONT, height=50, command= lambda: run_music_app(music_var, music_programs))
-launch_music.pack()
+launch_music = ctk.CTkButton(music_frame, text='Open Selected Music App', font=TEXT_FONT, height=50, command= lambda: run_program(music_var, music_programs))
+launch_music.pack(pady=25)
 
 # coding settings
 code_title = ctk.CTkLabel(code_frame, text="CODING", width=200, height=25, bg_color='transparent', font=TITLE_FONT)
@@ -88,8 +82,8 @@ code_select = ctk.CTkOptionMenu(code_frame, width=150, values=list(coding_progra
 code_select.set('Choose a Program')
 code_select.pack()
 
-launch_code = ctk.CTkButton(code_frame, text='Open Selected Coding App', font=TEXT_FONT, height=50, command= lambda: run_coding_app(code_var, coding_programs))
-launch_code.pack()
+launch_code = ctk.CTkButton(code_frame, text='Open Selected Coding App', font=TEXT_FONT, height=50, command= lambda: run_program(code_var, coding_programs))
+launch_code.pack(pady=25)
 
 # leisure settings
 fun_title = ctk.CTkLabel(fun_frame, text="LEISURE", width=200, height=25, bg_color='transparent', font=TITLE_FONT)
@@ -99,8 +93,8 @@ fun_select = ctk.CTkOptionMenu(fun_frame, width=150, values=list(fun_programs.ke
 fun_select.set('Choose a Program')
 fun_select.pack()
 
-launch_fun = ctk.CTkButton(fun_frame, text='Open Selected Fun App', font=TEXT_FONT, height=50, command= lambda: run_fun_app(fun_var, fun_programs))
-launch_fun.pack()
+launch_fun = ctk.CTkButton(fun_frame, text='Open Selected Fun App', font=TEXT_FONT, height=50, command= lambda: run_program(fun_var, fun_programs))
+launch_fun.pack(pady=25)
 
 
 # run program
