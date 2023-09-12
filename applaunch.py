@@ -54,6 +54,8 @@ app.title('Application Program Launcher')
 TITLE_FONT = ctk.CTkFont('Arial', 30)
 TEXT_FONT = ctk.CTkFont('Arial', 15)
 
+# This is a test for my new linux system.
+
 # frames section
 music_frame = ctk.CTkFrame(app, border_width=3, border_color='#ffffff', width=200)
 code_frame = ctk.CTkFrame(app, border_width=3, border_color='#ffffff', width=200)
